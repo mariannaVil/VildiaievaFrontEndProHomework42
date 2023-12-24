@@ -1,0 +1,97 @@
+body { 
+    font-family: Roboto, Tahoma, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+}
+.conteiner {
+    width: 1110px;
+    margin: 0 auto;
+}
+.header {
+    padding-top: 71px;
+    padding-bottom: 72px;
+    background: #EEEFF1;
+}
+#head, #foot, #designConteiner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.menu {
+    font-size: 0;
+    padding-top: 7px;
+}
+.menu a {
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: 0.1em;
+    color:  #828282;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-left: 42px;
+}
+.menu a:hover {
+    font-weight: 500;
+    color:#FFCC00;
+}
+.design {
+    font-size: 17px;
+    line-height: 34px;
+    color: #828282;
+    padding-top: 76px;
+    padding-bottom: 146px;
+    cursor: pointer;
+}
+.categoriesProducts {
+    width: 50%;
+    padding-top: 21px;
+}
+.orderForm {
+    width: 50%;
+}
+.politics {
+    background: #EFEFEF;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+.save {
+    font-size: 12px;
+    line-height: 14px;
+    color: #828282;
+}
+.confidentiality {
+    font-size: 12px;
+    line-height: 14px;
+    text-align: right;
+    color: #828282;
+    text-decoration: none;
+}
+.confidentiality:hover {
+    color: #F13C6E;
+}
+.url {
+    display: flex;
+    flex-direction: column;
+}
+.list {
+   display: flex;
+   justify-content: space-between;
+   padding-top: 10px;
+}
+.list ul {
+    padding-inline-start: 0;
+}
+.list li {
+    list-style-type: none;
+}
+.list a {
+    font-size: 17px;
+    line-height: 34px;
+    color:  #828282;
+    text-decoration: none; 
+}
+.list a:hover {
+    color: #FFCC00;
+}

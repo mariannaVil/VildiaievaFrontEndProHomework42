@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header class="header">
+        <div class="conteiner" id="head">
+            <a href="#">
+                <img src="../Homework42/img/logo.svg" alt="logo">
+            </a>
+            <nav class="menu">
+                <a href="#">головна</a>
+                <a href="#">категорії</a>
+                <a href="#">мої замовлення</a>
+                <a href="#">відгуки</a>
+                <a href="#">контакти</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="design">
+            <div class="conteiner" id="designConteiner">
+                <div class="categoriesProducts">
+                    <div id="categories">
+                    </div>
+                    <div id="products">
+                    </div>
+                    <div id="product-info">
+                    </div>
+                    <div id="order-info"></div>
+                </div>
+                <div class="orderForm">
+                    <form id="order-form" style="display: none">
+                        <label for="name">ПІБ покупця</label>
+                        <input type="text" id="name" required><br>
+                
+                        <label for="city">Місто</label>
+                        <select id="city" required>
+                            <option value="Vinnitsya">Вінниця</option>
+                            <option value="Kyiv">Київ</option>
+                            <option value="Harkiv">Харків</option>
+                            <option value="Dnipro">Дніпро</option>
+                            <option value="Lviv">Львів</option>
+                        </select><br>
+                
+                        <label for="novaPoshta">Склад Нової пошти</label>
+                        <input type="text" id="novaPoshta" required><br>
+                
+                        <label for="payment">Спосіб оплати</label>
+                        <select id="payment">
+                            <option value="afterPayment">Оплата після отримання</option>
+                            <option value="banckCard">Оплата банківською картою</option>
+                        </select><br>
+                
+                        <label for="quantity">Кількість товару</label>
+                        <input type="number" id="quantity" required><br>
+                
+                        <label for="comment">Коментра до замовлення</label>
+                        <textarea id="comment"></textarea><br>
+                
+                        <button type="button" id="confirm-order">Confirm</button>
+                    </form>
+                </div>  
+            </div>
+        </section>
+    </main>
+    <footer>
+        <section class="politics">
+            <div class="conteiner">
+                <div class="url">
+                    <div class="list">
+                        <ul class="home">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Work</a></li>
+                            <li><a href="#">Services</a></li>
+                        </ul>
+                        <ul class="about">
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Culture</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footerInfo" id="foot">
+                    <p class="save">Найкращий магазин (с) 2019 Всі права захищені</p> 
+                    <a class="confidentiality" href="#">Політика конфіденціальності</a>
+                </div>    
+            </div>
+        </section> 
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
