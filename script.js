@@ -5,6 +5,9 @@ let orderForm = document.getElementById('order-form');
 let confirmOrderButton = document.querySelector('#order-form button');
 let orderInfoContainer = document.getElementById('order-info');
 let orderData = {};
+let myOrdersButton = document.getElementById('my-orders-button');
+let userOrdersContainer = document.getElementById('user-orders-list');
+let userOrdersBlock = document.getElementById('user-orders');
 
 let categoryData = [
     { id: 1, name: 'Категорія 1' },
@@ -88,7 +91,20 @@ function validateAndSubmitOrder(product) {
         comment: document.getElementById('comment').value,
     };
 
+    saveOrder(orderData);
+
     displayOrderInfo();
+}
+
+function saveOrder(order) {
+    let savedOrders = JSON.parse(localStorage.getItem('userOrders')) || [];
+
+    savedOrders.push({
+        date: new Date().toLocaleString(),
+        ...order
+    });
+
+    localStorage.setItem('userOrders', JSON.stringify(savedOrders));
 }
 
 function displayOrderInfo() {
@@ -112,6 +128,83 @@ function displayOrderInfo() {
 
     let orderForm = document.getElementById('order-form');
     orderForm.style.display = 'none';
+}
+
+myOrdersButton.addEventListener('click', () => {
+    categories.style.display = 'none';
+    orderForm.style.display = 'none';
+
+    userOrdersBlock.style.display = 'block';
+
+    displayUserOrders();
+});
+
+function displayUserOrders() {
+    let savedOrders = JSON.parse(localStorage.getItem('userOrders')) || [];
+
+    userOrdersContainer.innerHTML = '';
+
+    if (savedOrders.length > 0) {
+        savedOrders.forEach(order => {
+            let orderElement = document.createElement('div');
+            orderElement.innerHTML = `
+                <p>Дата: ${order.date}</p>
+                <p>Ціна: ${order.price} грн</p>
+                <button class="view-order-details" data-order='${JSON.stringify(order)}'>Деталі</button>
+                <button class="delete-order" data-order='${JSON.stringify(order)}'>Видалити</button>
+            `;
+            userOrdersContainer.appendChild(orderElement);
+        });
+
+        document.querySelectorAll('.view-order-details').forEach(button => {
+            button.addEventListener('click', (event) => {
+                let order = JSON.parse(event.target.getAttribute('data-order'));
+                displayOrderDetails(order);
+            });
+        });
+
+        document.querySelectorAll('.delete-order').forEach(button => {
+            button.addEventListener('click', (event) => {
+                let order = JSON.parse(event.target.getAttribute('data-order'));
+                deleteOrder(order);
+            });
+        });
+    } else {
+        userOrdersContainer.innerHTML = '<p>У вас немає замовлень.</p>';
+    }
+
+    userOrdersBlock.style.display = 'block';
+}
+
+function displayOrderDetails(order) {
+    let orderDetailsContainer = document.getElementById('order-info');
+    
+    orderDetailsContainer.innerHTML = '';
+
+    let orderDetailsElement = document.createElement('div');
+    orderDetailsElement.innerHTML = `
+        <h3>Деталі замовлення</h3>
+        <p><strong>Товар:</strong> ${order.product}</p>
+        <p><strong>Ціна:</strong> ${order.price} грн</p>
+        <p><strong>ПІБ покупця:</strong> ${order.name}</p>
+        <p><strong>Місто:</strong> ${order.city}</p>
+        <p><strong>Склад Нової пошти:</strong> ${order.novaPoshta}</p>
+        <p><strong>Спосіб оплати:</strong> ${order.payment}</p>
+        <p><strong>Кількість товару:</strong> ${order.quantity}</p>
+        <p><strong>Коментар:</strong> ${order.comment || 'Немає'}</p>
+    `;
+
+    orderDetailsContainer.appendChild(orderDetailsElement);
+}
+
+function deleteOrder(order) {
+    let savedOrders = JSON.parse(localStorage.getItem('userOrders')) || [];
+
+    let updatedOrders = savedOrders.filter(savedOrder => savedOrder.date !== order.date);
+
+    localStorage.setItem('userOrders', JSON.stringify(updatedOrders));
+
+    displayUserOrders();
 }
 
 displayCategories();

@@ -10,7 +10,7 @@
     <header class="header">
         <div class="conteiner" id="head">
             <a href="#">
-                <img src="../Homework42/img/logo.svg" alt="logo">
+                <img src="../VildiaievaFrontEndProHomework42/img/logo.svg" alt="logo">
             </a>
             <nav class="menu">
                 <a href="#">головна</a>
@@ -23,48 +23,57 @@
     </header>
     <main>
         <section class="design">
-            <div class="conteiner" id="designConteiner">
-                <div class="categoriesProducts">
-                    <div id="categories">
+            <div class="conteiner" >
+                <button id="my-orders-button">Мої замовлення</button>
+                <div id="designConteiner">
+                    <div class="categoriesProducts">
+                        <div id="categories">
+                        </div>
+                        <div id="products">
+                        </div>
+                        <div id="product-info">
+                        </div>
+                        <div id="order-info"></div>
                     </div>
-                    <div id="products">
+                    <div id="user-orders" style="display: none">
+                        <h2>Мої замовлення</h2>
+                        <div id="user-orders-list"></div>
                     </div>
-                    <div id="product-info">
-                    </div>
-                    <div id="order-info"></div>
+                    <div class="orderForm">
+                        <form id="order-form" style="display: none">
+                            <label for="name">ПІБ покупця</label>
+                            <input type="text" id="name" required><br>
+                    
+                            <label for="city">Місто</label>
+                            <select id="city" required>
+                                <option value="Vinnitsya">Вінниця</option>
+                                <option value="Kyiv">Київ</option>
+                                <option value="Harkiv">Харків</option>
+                                <option value="Dnipro">Дніпро</option>
+                                <option value="Lviv">Львів</option>
+                            </select><br>
+                    
+                            <label for="novaPoshta">Склад Нової пошти</label>
+                            <input type="text" id="novaPoshta" required><br>
+                    
+                            <label for="payment">Спосіб оплати</label>
+                            <select id="payment">
+                                <option value="afterPayment">Оплата після отримання</option>
+                                <option value="banckCard">Оплата банківською картою</option>
+                            </select><br>
+                    
+                            <label for="quantity">Кількість товару</label>
+                            <input type="number" id="quantity" required><br>
+                    
+                            <label for="comment">Коментра до замовлення</label>
+                            <textarea id="comment"></textarea><br>
+                    
+                            <button type="button" id="confirm-order">Confirm</button>
+                        </form>
+                    </div>  
+
                 </div>
-                <div class="orderForm">
-                    <form id="order-form" style="display: none">
-                        <label for="name">ПІБ покупця</label>
-                        <input type="text" id="name" required><br>
                 
-                        <label for="city">Місто</label>
-                        <select id="city" required>
-                            <option value="Vinnitsya">Вінниця</option>
-                            <option value="Kyiv">Київ</option>
-                            <option value="Harkiv">Харків</option>
-                            <option value="Dnipro">Дніпро</option>
-                            <option value="Lviv">Львів</option>
-                        </select><br>
-                
-                        <label for="novaPoshta">Склад Нової пошти</label>
-                        <input type="text" id="novaPoshta" required><br>
-                
-                        <label for="payment">Спосіб оплати</label>
-                        <select id="payment">
-                            <option value="afterPayment">Оплата після отримання</option>
-                            <option value="banckCard">Оплата банківською картою</option>
-                        </select><br>
-                
-                        <label for="quantity">Кількість товару</label>
-                        <input type="number" id="quantity" required><br>
-                
-                        <label for="comment">Коментра до замовлення</label>
-                        <textarea id="comment"></textarea><br>
-                
-                        <button type="button" id="confirm-order">Confirm</button>
-                    </form>
-                </div>  
             </div>
         </section>
     </main>
