@@ -1,20 +1,20 @@
-let categories = document.getElementById('categories');
-let products = document.getElementById('products');
-let productInfo = document.getElementById('product-info');
-let orderForm = document.getElementById('order-form');
-let confirmOrderButton = document.querySelector('#order-form button');
-let orderInfoContainer = document.getElementById('order-info');
+const categories = document.getElementById('categories');
+const products = document.getElementById('products');
+const productInfo = document.getElementById('product-info');
+const orderForm = document.getElementById('order-form');
+const confirmOrderButton = document.querySelector('#order-form button');
+const orderInfoContainer = document.getElementById('order-info');
 let orderData = {};
-let myOrdersButton = document.getElementById('my-orders-button');
-let userOrdersContainer = document.getElementById('user-orders-list');
-let userOrdersBlock = document.getElementById('user-orders');
+const myOrdersButton = document.getElementById('my-orders-button');
+const userOrdersContainer = document.getElementById('user-orders-list');
+const userOrdersBlock = document.getElementById('user-orders');
 
-let categoryData = [
+const categoryData = [
     { id: 1, name: 'Категорія 1' },
     { id: 2, name: 'Категорія 2' },
 ];
 
-let productData = [
+const productData = [
     { id: 1, name: 'Товар 1', categoryId: 1, description: 'Опис товару 1' },
     { id: 2, name: 'Товар 2', categoryId: 1, description: 'Опис товару 2' },
     { id: 3, name: 'Товар 3', categoryId: 2, description: 'Опис товару 3' },
@@ -23,7 +23,7 @@ let productData = [
 function displayCategories() {
     categories.innerHTML = '';
     categoryData.forEach(category => {
-        let categoryElement = document.createElement('div');
+        const categoryElement = document.createElement('div');
         categoryElement.textContent = category.name;
         categoryElement.addEventListener('click', () => {
             displayProducts(category.id);
@@ -34,9 +34,9 @@ function displayCategories() {
 
 function displayProducts(categoryId) {
     products.innerHTML = '';
-    let productsInCategory = productData.filter(product => product.categoryId === categoryId);
+    const productsInCategory = productData.filter(product => product.categoryId === categoryId);
     productsInCategory.forEach(product => {
-        let productElement = document.createElement('div');
+        const productElement = document.createElement('div');
         productElement.textContent = product.name;
         productElement.addEventListener('click', () => {
             displayProductInfo(product);
@@ -47,13 +47,13 @@ function displayProducts(categoryId) {
 
 function displayProductInfo(product) {
     productInfo.innerHTML = '';
-    let productInfoElement = document.createElement('div');
+    const productInfoElement = document.createElement('div');
     productInfoElement.innerHTML = `
         <h2>${product.name}</h2>
         <p>${product.description}</p>
         <button id="buy-button">Купити</button>
     `;
-    let buyButton = productInfoElement.querySelector('#buy-button');
+    const buyButton = productInfoElement.querySelector('#buy-button');
     buyButton.addEventListener('click', () => {
         displayOrderForm(product);
     });
@@ -69,11 +69,11 @@ function displayOrderForm(product) {
 }
 
 function validateAndSubmitOrder(product) {
-    let name = document.getElementById('name').value;
-    let city = document.getElementById('city').value;
-    let novaPoshta = document.getElementById('novaPoshta').value;
-    let payment = document.getElementById('payment').value;
-    let quantity = document.getElementById('quantity').value;
+    const name = document.getElementById('name').value;
+    const city = document.getElementById('city').value;
+    const novaPoshta = document.getElementById('novaPoshta').value;
+    const payment = document.getElementById('payment').value;
+    const quantity = document.getElementById('quantity').value;
 
     if (!name || !city || !novaPoshta || !payment || !quantity) {
         alert('Будь ласка, заповніть всі обовязкові поля.');
@@ -97,7 +97,7 @@ function validateAndSubmitOrder(product) {
 }
 
 function saveOrder(order) {
-    let savedOrders = JSON.parse(localStorage.getItem('userOrders')) || [];
+    const savedOrders = JSON.parse(localStorage.getItem('userOrders')) || [];
 
     savedOrders.push({
         date: new Date().toLocaleString(),
@@ -111,7 +111,7 @@ function displayOrderInfo() {
     
     orderInfoContainer.innerHTML = '';
 
-    let orderInfoElement = document.createElement('div');
+    const orderInfoElement = document.createElement('div');
     orderInfoElement.innerHTML = `
         <h3>Інформація про замовлення</h3>
         <p><strong>Товар:</strong> ${orderData.product}</p>
@@ -126,7 +126,6 @@ function displayOrderInfo() {
 
     orderInfoContainer.appendChild(orderInfoElement);
 
-    let orderForm = document.getElementById('order-form');
     orderForm.style.display = 'none';
 }
 
@@ -140,13 +139,13 @@ myOrdersButton.addEventListener('click', () => {
 });
 
 function displayUserOrders() {
-    let savedOrders = JSON.parse(localStorage.getItem('userOrders')) || [];
+    const savedOrders = JSON.parse(localStorage.getItem('userOrders')) || [];
 
     userOrdersContainer.innerHTML = '';
 
     if (savedOrders.length > 0) {
         savedOrders.forEach(order => {
-            let orderElement = document.createElement('div');
+            const orderElement = document.createElement('div');
             orderElement.innerHTML = `
                 <p>Дата: ${order.date}</p>
                 <p>Ціна: ${order.price} грн</p>
@@ -158,14 +157,14 @@ function displayUserOrders() {
 
         document.querySelectorAll('.view-order-details').forEach(button => {
             button.addEventListener('click', (event) => {
-                let order = JSON.parse(event.target.getAttribute('data-order'));
+                const order = JSON.parse(event.target.getAttribute('data-order'));
                 displayOrderDetails(order);
             });
         });
 
         document.querySelectorAll('.delete-order').forEach(button => {
             button.addEventListener('click', (event) => {
-                let order = JSON.parse(event.target.getAttribute('data-order'));
+                const order = JSON.parse(event.target.getAttribute('data-order'));
                 deleteOrder(order);
             });
         });
@@ -177,11 +176,11 @@ function displayUserOrders() {
 }
 
 function displayOrderDetails(order) {
-    let orderDetailsContainer = document.getElementById('order-info');
+    const orderDetailsContainer = document.getElementById('order-info');
     
     orderDetailsContainer.innerHTML = '';
 
-    let orderDetailsElement = document.createElement('div');
+    const orderDetailsElement = document.createElement('div');
     orderDetailsElement.innerHTML = `
         <h3>Деталі замовлення</h3>
         <p><strong>Товар:</strong> ${order.product}</p>
@@ -198,9 +197,9 @@ function displayOrderDetails(order) {
 }
 
 function deleteOrder(order) {
-    let savedOrders = JSON.parse(localStorage.getItem('userOrders')) || [];
+    const savedOrders = JSON.parse(localStorage.getItem('userOrders')) || [];
 
-    let updatedOrders = savedOrders.filter(savedOrder => savedOrder.date !== order.date);
+    const updatedOrders = savedOrders.filter(savedOrder => savedOrder.date !== order.date);
 
     localStorage.setItem('userOrders', JSON.stringify(updatedOrders));
 
